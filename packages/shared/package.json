@@ -1,0 +1,25 @@
+{
+	"name": "@ai-agent/shared",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "types/index.ts",
+	"exports": {
+		".": {
+			"types": "./types/index.ts",
+			"import": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "bun build types/index.ts --outdir dist --target node --format esm",
+		"dev": "bun build types/index.ts --outdir dist --target node --format esm --watch",
+		"clean": "rm -rf dist",
+		"typecheck": "bun typecheck",
+		"prepare": "bun run build"
+	},
+	"devDependencies": {
+		"bun-types": "^1.2.10",
+		"typescript": "^5.3.3"
+	}
+}

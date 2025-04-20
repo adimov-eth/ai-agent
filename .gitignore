@@ -1,0 +1,47 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+output.txt
+node_modules
+dist
+.mastra
+.env.development
+.env
+*.db
+*.db-*
+
+
+# Build outputs
+dist
+build
+.next
+out
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# Bun
+bun.lockb 

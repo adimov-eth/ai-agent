@@ -1,0 +1,48 @@
+---
+description: when updating dependencies
+globs: 
+alwaysApply: false
+---
+# Dependency Management
+
+This project uses pnpm for package management and follows strict dependency management rules.
+
+## Workspace Configuration
+
+1. **Root Configuration**
+   - [package.json](mdc:package.json): Defines workspace scripts and engine requirements
+   - [pnpm-workspace.yaml](mdc:pnpm-workspace.yaml): Defines workspace package locations
+   - [tsconfig.json](mdc:tsconfig.json): Base TypeScript configuration
+
+2. **Package Dependencies**
+   - Use `workspace:*` for internal dependencies
+   - Use exact versions for external dependencies
+   - No direct npm/yarn commands, only pnpm
+   - Keep dependencies minimal and focused
+
+## Version Management
+
+1. **Node Version**
+   - Minimum Node.js version: 18.0.0
+   - Minimum pnpm version: 8.0.0
+   - Use .nvmrc for Node version management
+
+2. **Package Versions**
+   - All internal packages version in sync
+   - External dependencies kept up to date
+   - Security updates prioritized
+   - Breaking changes carefully managed
+
+## Environment Management
+
+1. **Environment Files**
+   - Separate .env files per package
+   - No committed .env files
+   - Example .env.example files provided
+   - Clear documentation of required variables
+
+2. **Runtime Configuration**
+   - Use of environment variables
+   - No hardcoded configuration
+   - Clear validation of required variables
+   - Proper error messages for missing configuration

@@ -1,15 +1,36 @@
-# telegram
+# Telegram Bot Package
 
-To install dependencies:
+This package implements a Telegram bot that interfaces with the Mastra AI agent.
 
-```bash
-bun install
+## Environment Setup
+
+Create a `.env` file in this directory with the following variables:
+
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token
+MASTRA_API_URL=http://localhost:4111
 ```
 
-To run:
+## Development
 
 ```bash
-bun run index.ts
+# Install dependencies (from root)
+pnpm install
+
+# Start development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
 ```
 
-This project was created using `bun init` in bun v1.2.9. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+## Runtime
+
+This package uses Bun as its runtime for optimal performance. Make sure you have Bun installed:
+
+```bash
+curl -fsSL https://bun.sh/install | bash
+```

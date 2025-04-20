@@ -1,5 +1,8 @@
+import { Mastra } from "@mastra/core";
+import { assistantAgent } from "./agents/assistant";
 
-import { Mastra } from '@mastra/core';
-
-export const mastra = new Mastra()
-        
+export const mastra = new Mastra({
+	agents: {
+		telegramAssistant: assistantAgent,
+	},
+});

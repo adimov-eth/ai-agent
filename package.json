@@ -1,0 +1,25 @@
+{
+	"name": "ai-agent",
+	"private": true,
+	"scripts": {
+		"build": "pnpm -r build",
+		"dev": "pnpm -r --parallel dev",
+		"start": "pnpm --filter @ai-agent/telegram start",
+		"clean": "pnpm -r clean",
+		"typecheck": "pnpm -r typecheck",
+		"prepare": "pnpm build",
+		"dev:ai": "pnpm --filter @ai-agent/ai dev",
+		"dev:telegram": "pnpm --filter @ai-agent/telegram dev",
+		"dev:shared": "pnpm --filter @ai-agent/shared dev",
+		"build:ai": "pnpm --filter @ai-agent/ai build",
+		"build:telegram": "pnpm --filter @ai-agent/telegram build",
+		"build:shared": "pnpm --filter @ai-agent/shared build",
+		"check:env": "node -e \"['packages/ai/.env', 'packages/telegram/.env'].forEach(f => { try { require('fs').accessSync(f); console.log('✅ ' + f + ' exists'); } catch(e) { console.error('❌ Missing ' + f); process.exit(1); } })\"",
+		"setup": "pnpm install && pnpm build:shared && pnpm build"
+	},
+	"engines": {
+		"node": ">=18.0.0",
+		"pnpm": ">=8.0.0"
+	},
+	"packageManager": "pnpm@10.8.0+sha512.0e82714d1b5b43c74610193cb20734897c1d00de89d0e18420aebc5977fa13d780a9cb05734624e81ebd81cc876cd464794850641c48b9544326b5622ca29971"
+}

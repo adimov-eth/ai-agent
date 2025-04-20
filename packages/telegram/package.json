@@ -1,18 +1,21 @@
 {
-	"name": "telegram",
-	"module": "src/index.ts",
-	"type": "module",
+	"name": "@ai-agent/telegram",
+	"version": "0.1.0",
 	"private": true,
+	"type": "module",
 	"scripts": {
-		"dev": "bun run src/index.ts"
-	},
-	"devDependencies": {
-		"@types/bun": "latest"
-	},
-	"peerDependencies": {
-		"typescript": "^5"
+		"dev": "bun --watch src/index.ts",
+		"build": "bun build ./src/index.ts --outdir dist --target node",
+		"start": "bun run dist/index.js",
+		"clean": "rm -rf dist",
+		"typecheck": "bun typecheck"
 	},
 	"dependencies": {
-		"grammy": "^1.36.0"
+		"grammy": "^1.21.1",
+		"@ai-agent/shared": "workspace:*"
+	},
+	"devDependencies": {
+		"bun-types": "latest",
+		"typescript": "^5.3.3"
 	}
 }
