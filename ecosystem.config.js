@@ -27,6 +27,12 @@ module.exports = {
 			max_memory_restart: "500M",
 			error_file: "./logs/telegram-error.log",
 			out_file: "./logs/telegram-out.log",
+			instances: 1,
+			exec_mode: "fork",
+			autorestart: true,
+			restart_delay: 4000,
+			kill_timeout: 8000,
+			wait_ready: true,
 		},
 	],
 };

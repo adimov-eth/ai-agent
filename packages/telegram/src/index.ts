@@ -52,6 +52,21 @@ bot.catch((err) => {
 	console.error("Bot error:", err);
 });
 
+// Graceful shutdown handling
+const shutdown = async () => {
+	console.log("Shutting down bot...");
+	await bot.stop();
+	process.exit(0);
+};
+
+process.on("SIGINT", shutdown);
+process.on("SIGTERM", shutdown);
+
 // Start bot
 console.log("Starting Telegram bot...");
 await bot.start();
+
+// Signal ready to PM2
+if (process.send) {
+	process.send("ready");
+}
