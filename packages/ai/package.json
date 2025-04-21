@@ -4,8 +4,8 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "mastra dev",
-		"build": "mastra build",
+		"dev": "pnpx mastra dev",
+		"build": "pnpx mastra build",
 		"clean": "rm -rf dist",
 		"typecheck": "tsc -b --noEmit",
 		"validate-knowledge": "tsx src/scripts/knowledge.ts --validate",
