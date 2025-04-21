@@ -7,4 +7,8 @@ onlyBuiltDependencies:
   - '@prisma/engines'
   - canvas
   - esbuild
+  - onnxruntime-node
   - prisma
+  - protobufjs
+  - sharp
+  - tree-sitter
