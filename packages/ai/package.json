@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "pnpx mastra dev",
-		"build": "pnpx mastra build",
+		"build": "NODE_OPTIONS='--max-old-space-size=8192' pnpx mastra build",
 		"clean": "rm -rf dist",
 		"typecheck": "tsc -b --noEmit",
 		"validate-knowledge": "tsx src/scripts/knowledge.ts --validate",
