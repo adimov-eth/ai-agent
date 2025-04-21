@@ -6,6 +6,10 @@ module.exports = {
 			env: {
 				NODE_ENV: "production",
 			},
+			env_production: {
+				NODE_ENV: "production",
+			},
+			env_file: "./packages/ai/.env",
 			max_memory_restart: "1G",
 			error_file: "./logs/ai-error.log",
 			out_file: "./logs/ai-out.log",
@@ -16,6 +20,10 @@ module.exports = {
 			env: {
 				NODE_ENV: "production",
 			},
+			env_production: {
+				NODE_ENV: "production",
+			},
+			env_file: "./packages/telegram/.env",
 			max_memory_restart: "500M",
 			error_file: "./logs/telegram-error.log",
 			out_file: "./logs/telegram-out.log",
