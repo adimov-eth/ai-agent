@@ -6,6 +6,7 @@
 	"scripts": {
 		"dev": "pnpx mastra dev",
 		"build": "NODE_OPTIONS='--max-old-space-size=8192' pnpx mastra build",
+		"start": "bun .mastra/output/index.mjs",
 		"clean": "rm -rf dist",
 		"typecheck": "tsc -b --noEmit",
 		"validate-knowledge": "tsx src/scripts/knowledge.ts --validate",
