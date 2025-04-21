@@ -1,0 +1,150 @@
+---
+title: "Knowledge Base Formatting Guidelines"
+date: 2024-03-20
+---
+
+# Knowledge Base Formatting Guidelines
+
+## Document Types
+
+### 1. Area Guides
+- **Frontmatter Requirements**
+  ```yaml
+  ---
+  title: "Area Name"
+  date: YYYY-MM-DD
+  coverImage: "area-name-main-image.jpg"
+  lastUpdated: YYYY-MM-DD
+  author: "Author Name"
+  category: "area-guides"
+  tags: ["area", "guide", "dubai", "specific-area-name"]
+  ---
+  ```
+
+- **Required Sections**
+  1. Title (H1)
+  2. Brief Overview
+  3. Location & Accessibility
+  4. Amenities & Facilities
+  5. Property Types & Prices
+  6. Community Features
+  7. Nearby Attractions
+  8. Transportation
+  9. Schools & Healthcare
+  10. Pros & Cons
+
+- **Image Guidelines**
+  - All images must be in WebP format
+  - Maximum size: 800KB
+  - Dimensions: 1200x800px
+  - Alt text required
+  - Captions recommended
+
+### 2. Market Updates
+- **XML Structure**
+  ```xml
+  <summary>
+    <headline>Title</headline>
+    <context>Brief Overview</context>
+    <development>Main Content</development>
+    <impact_analysis>Impact Analysis</impact_analysis>
+    <action_points>Action Items</action_points>
+    <sources>Sources List</sources>
+    <tags>Relevant Tags</tags>
+    <summary_type>Update Type</summary_type>
+  </summary>
+  ```
+
+- **Required Elements**
+  - All sections must be properly nested
+  - No HTML tags within XML
+  - Markdown formatting allowed inside tags
+  - Sources must be properly cited
+  - Tags must be comma-separated
+
+### 3. Property Listings
+- **Frontmatter Requirements**
+  ```yaml
+  ---
+  title: "Property Name"
+  date: YYYY-MM-DD
+  type: "apartment|villa|townhouse"
+  status: "off-plan|ready"
+  price: 
+    min: number
+    max: number
+    currency: "AED"
+  developer: "Developer Name"
+  location: "Area Name"
+  coverImage: "property-main-image.jpg"
+  ---
+  ```
+
+## Formatting Rules
+
+### Text Formatting
+1. Use Markdown for formatting
+2. Consistent heading hierarchy (H1 > H2 > H3)
+3. No skipping heading levels
+4. Lists must be properly indented
+5. Code blocks must specify language
+
+### Links
+1. Internal links must be relative
+2. External links must be HTTPS
+3. No broken links allowed
+4. Link text must be descriptive
+
+### Numbers & Units
+1. Currency format: "AED X,XXX,XXX"
+2. Area format: "X,XXX sq ft" or "XXX sq m"
+3. Prices in millions: "AED XX.X M"
+4. Percentages: "XX.X%"
+
+### Dates & Times
+1. ISO 8601 format: YYYY-MM-DD
+2. Time zones must be specified
+3. Quarters format: "Q1 2024"
+4. Years must be four digits
+
+## Validation Rules
+
+### Required Checks
+1. Frontmatter presence and format
+2. Required sections presence
+3. Image references validity
+4. Link validity
+5. XML structure (for market updates)
+6. Price format consistency
+7. Date format validity
+8. Required metadata
+9. File naming convention
+10. Maximum file size
+
+### File Naming
+1. Area guides: `area-name.md`
+2. Market updates: `YYYY-period.md`
+3. Property listings: `property-name-location.md`
+
+### Directory Structure
+```
+knowledge/
+├── general/
+│   ├── area-guides/
+│   ├── market-updates/
+│   └── properties/
+└── properties/
+    ├── off-plan/
+    └── ready/
+```
+
+## Best Practices
+
+1. Keep paragraphs concise (max 4-5 sentences)
+2. Use active voice
+3. Include relevant statistics and data
+4. Update lastUpdated in frontmatter when editing
+5. Maintain consistent tone across documents
+6. Include source citations for market data
+7. Regular validation of links and images
+8. Proper error handling in validation script 

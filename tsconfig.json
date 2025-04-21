@@ -16,7 +16,13 @@
 		"noImplicitReturns": true,
 		"noFallthroughCasesInSwitch": true,
 		"declaration": true,
-		"composite": true
+		"composite": true,
+		"baseUrl": ".",
+		"paths": {
+			"@dubai/shared/*": ["packages/shared/*"],
+			"@dubai/ai/*": ["packages/ai/src/*"],
+			"@dubai/telegram/*": ["packages/telegram/src/*"]
+		}
 	},
 	"exclude": ["**/node_modules", "**/dist"]
 }

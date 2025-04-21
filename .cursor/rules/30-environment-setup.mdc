@@ -1,0 +1,57 @@
+---
+description: env or environment variables 
+globs: 
+alwaysApply: false
+---
+# Environment Setup
+
+## Required Environment Files
+
+### AI Package Environment
+File: `packages/ai/.env`
+```env
+OPENAI_API_KEY=your_openai_key
+MASTRA_MEMORY_PG_URL=postgres://user:pass@localhost:5432/db
+MASTRA_RAG_ENABLED=true
+```
+
+### Telegram Package Environment
+File: `packages/telegram/.env`
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token
+MASTRA_API_URL=http://localhost:4111
+```
+
+## Runtime Requirements
+- Node.js ≥18.0.0
+- pnpm ≥8.0.0
+- Bun (latest version)
+- PostgreSQL ≥14 (for memory storage)
+
+## Development Setup
+
+### First Time Setup
+```bash
+# Install dependencies and build
+pnpm setup
+
+# Verify environment files
+pnpm check:env
+```
+
+### Configuration Files
+Key configuration files:
+- [tsconfig.json](mdc:tsconfig.json): TypeScript configuration
+- [package.json](mdc:package.json): Workspace configuration
+- [packages/ai/src/mastra/index.ts](mdc:packages/ai/src/mastra/index.ts): AI configuration
+
+### Database Setup
+1. Create PostgreSQL database
+2. Update `MASTRA_MEMORY_PG_URL` in AI package .env
+3. Tables will be created automatically on first run
+
+## Security Notes
+- Never commit .env files
+- Use environment variables for all secrets
+- Keep dependencies updated
+- Implement proper rate limiting

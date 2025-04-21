@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Build Process and CI/CD
+
+This document outlines the build system configuration and continuous integration/deployment processes.
+
+## Build System
+
+### Build Commands
+```bash
+# Build all packages
+pnpm build
+
+# Build specific package
+pnpm build --filter @ai-agent/<package-name>
+
+# Clean and rebuild
+pnpm clean && pnpm build
+```
+
+### Build Order
+1. **Shared Package (Bun)**
+   - Built first due to type dependencies
+   - [packages/shared/package.json](mdc:packages/shared/package.json) defines build process
+   - Uses Bun for TypeScript compilation
+   - Outputs to `packages/shared/dist`
+
+2. **AI Package (Mastra)**
+   - [packages/ai/package.json](mdc:packages/ai/package.json) defines Mastra configuration
+   - Depends on shared types
+   - Outputs to `packages/ai/.mastra/output`
+
+3. **Telegram Package**
+   - [packages/telegram/package.json](mdc:packages/telegram/package.json) defines build
+   - Depends on shared types
+   - Outputs to `packages/telegram/dist`
+
+## Continuous Integration
+
+### GitHub Actions Workflow
+- Runs on push to main and pull requests
+- Validates types and builds
+- Runs tests and linting
+- Checks environment configuration
+
+### Build Verification
+- Type checking across all packages
+- Unit and integration tests
+- No runtime type errors allowed
+- Environment validation
+
+## Continuous Deployment
+
+### Production Deployment
+```bash
+# Build for production
+pnpm build:prod
+
+# Run deployment checks
+pnpm pre:deploy
+```
+
+### Deployment Verification
+- Environment validation
+- Database migrations
+- Health checks
+- Rollback procedures

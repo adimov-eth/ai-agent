@@ -1,2 +1,10 @@
 packages:
-  - 'packages/*' 
+  - packages/*
+
+onlyBuiltDependencies:
+  - '@mastra/core'
+  - '@prisma/client'
+  - '@prisma/engines'
+  - canvas
+  - esbuild
+  - prisma

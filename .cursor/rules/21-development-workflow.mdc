@@ -1,0 +1,69 @@
+---
+description: development workflow
+globs: 
+alwaysApply: false
+---
+# Development Workflow
+
+This document outlines the development workflow using pnpm for package management and Mastra AI development tools.
+
+## Package Management
+All package management is done through pnpm from the root directory:
+
+### Installing Dependencies
+```bash
+# Add to specific package
+pnpm add <package> --filter @ai-agent/<package-name>
+
+# Add as dev dependency
+pnpm add -D <package> --filter @ai-agent/<package-name>
+
+# Add workspace dependency
+pnpm add @ai-agent/shared --filter @ai-agent/telegram --workspace
+```
+
+## Development Scripts
+
+### Watch Mode Development
+```bash
+# Start all services in parallel
+pnpm dev
+
+# Individual services
+pnpm dev:ai      # AI Service
+pnpm dev:telegram # Telegram Bot
+pnpm dev:shared  # Shared Types
+```
+
+The watch mode provides:
+- Mastra dev server watching AI package
+- Types auto-rebuilding on changes
+- Hot reload for Telegram bot
+- Automatic dependency updates
+
+### Utility Commands
+```bash
+# Type checking
+pnpm typecheck
+
+# Clean build artifacts
+pnpm clean
+
+# Check environment files
+pnpm check:env
+
+# Run tests
+pnpm test
+```
+
+## Development Files
+Key development files:
+- [packages/ai/src/mastra/agents/assistant.ts](mdc:packages/ai/src/mastra/agents/assistant.ts): AI agent behavior
+- [packages/telegram/src/index.ts](mdc:packages/telegram/src/index.ts): Bot interactions
+- [packages/shared/types/index.ts](mdc:packages/shared/types/index.ts): Shared types
+
+## Type Management
+- Update types in [packages/shared/types/index.ts](mdc:packages/shared/types/index.ts)
+- Types auto-rebuild in watch mode
+- Changes propagate to dependent packages
+- Run `pnpm typecheck` to verify types

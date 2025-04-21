@@ -2,7 +2,7 @@
 	"name": "ai-agent",
 	"private": true,
 	"scripts": {
-		"build": "pnpm -r build",
+		"build": "pnpm build:shared && pnpm --filter='@ai-agent/ai' --filter='@ai-agent/telegram' --parallel build",
 		"dev": "pnpm -r --parallel dev",
 		"start": "pnpm --filter @ai-agent/telegram start",
 		"clean": "pnpm -r clean",
@@ -15,7 +15,10 @@
 		"build:telegram": "pnpm --filter @ai-agent/telegram build",
 		"build:shared": "pnpm --filter @ai-agent/shared build",
 		"check:env": "node -e \"['packages/ai/.env', 'packages/telegram/.env'].forEach(f => { try { require('fs').accessSync(f); console.log('✅ ' + f + ' exists'); } catch(e) { console.error('❌ Missing ' + f); process.exit(1); } })\"",
-		"setup": "pnpm install && pnpm build:shared && pnpm build"
+		"setup": "pnpm install && pnpm build:shared && pnpm build",
+		"knowledge": "pnpm --filter @ai-agent/ai knowledge",
+		"validate-knowledge": "pnpm --filter @ai-agent/ai validate-knowledge",
+		"ingest-knowledge": "pnpm --filter @ai-agent/ai ingest-knowledge"
 	},
 	"engines": {
 		"node": ">=18.0.0",

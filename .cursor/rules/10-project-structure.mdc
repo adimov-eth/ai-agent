@@ -1,0 +1,39 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Project Structure
+
+This is a pnpm monorepo for a Telegram bot powered by Mastra AI. The project follows a strict functional programming paradigm and modular architecture.
+
+## Core Packages
+
+### AI Package
+- [packages/ai/src/mastra/index.ts](mdc:packages/ai/src/mastra/index.ts): Main Mastra AI agent configuration
+- [packages/ai/src/mastra/agents/assistant.ts](mdc:packages/ai/src/mastra/agents/assistant.ts): Telegram assistant agent implementation
+- Uses Mastra's memory, PostgreSQL, and RAG capabilities
+
+### Telegram Package
+- [packages/telegram/src/index.ts](mdc:packages/telegram/src/index.ts): Telegram bot implementation
+- Handles message routing and bot interactions
+- Uses Bun runtime for performance
+
+### Shared Package
+- [packages/shared/types/index.ts](mdc:packages/shared/types/index.ts): Shared TypeScript types
+- Common interfaces and type definitions
+- Built with Bun for optimal performance
+
+## Documentation
+- [docs/guide.md](mdc:docs/guide.md): Main implementation guide
+- [docs/grammy.xml](mdc:docs/grammy.xml): Grammy bot framework documentation
+
+## Configuration Files
+- [package.json](mdc:package.json): Root workspace configuration
+- [pnpm-workspace.yaml](mdc:pnpm-workspace.yaml): Workspace package definitions
+- [tsconfig.json](mdc:tsconfig.json): Base TypeScript configuration
+
+## Environment Setup
+Each package requires its own environment configuration:
+- `packages/ai/.env`: OpenAI and Mastra configuration
+- `packages/telegram/.env`: Telegram bot token and API endpoints

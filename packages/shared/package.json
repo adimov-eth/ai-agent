@@ -12,7 +12,7 @@
 		}
 	},
 	"scripts": {
-		"build": "bun build types/index.ts --outdir dist --target node --format esm",
+		"build": "tsc -b && bun build types/index.ts --outdir dist --target node --format esm",
 		"dev": "bun build types/index.ts --outdir dist --target node --format esm --watch",
 		"clean": "rm -rf dist",
 		"typecheck": "bun typecheck",

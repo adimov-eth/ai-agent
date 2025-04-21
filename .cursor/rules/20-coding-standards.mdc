@@ -1,0 +1,58 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Coding Standards
+
+## Core Principles
+
+### Functional Programming
+- No classes, only pure functions and modules
+- Immutable data structures
+- Function composition over inheritance
+- Early returns for better error handling
+
+### TypeScript Standards
+- Strict type checking enabled
+- Explicit return types on exported functions
+- Use of readonly and const assertions
+- Proper type exports in [packages/shared/types/index.ts](mdc:packages/shared/types/index.ts)
+
+### Module Structure
+- Single responsibility principle
+- Maximum 30 lines per function
+- Maximum 300 lines per file
+- Clear function and variable naming
+
+### Naming Conventions
+- `camelCase` for variables and functions
+- `PascalCase` for types and interfaces
+- `UPPER_CASE` for constants
+- Descriptive, action-based function names
+
+### Runtime & Dependencies
+- Use Bun runtime for backend services
+- Manage dependencies with pnpm only
+- Never edit package.json directly
+- Use workspace dependencies for internal packages
+
+## Package-Specific Standards
+
+### AI Package [packages/ai/src/mastra/index.ts](mdc:packages/ai/src/mastra/index.ts)
+- Pure functional agent implementation
+- Clear agent instructions
+- Proper error handling for API calls
+- Memory and RAG integration patterns
+
+### Telegram Package [packages/telegram/src/index.ts](mdc:packages/telegram/src/index.ts)
+- Functional bot implementation
+- Clear message handling
+- Proper error boundaries
+- Environment variable validation
+
+### Shared Package [packages/shared/types/index.ts](mdc:packages/shared/types/index.ts)
+- Only type definitions
+- No runtime code
+- Clear type exports
+- Proper documentation

@@ -1,0 +1,42 @@
+---
+description: RAG knowledge
+globs: 
+alwaysApply: false
+---
+# RAG System Architecture
+
+This project implements a Retrieval Augmented Generation (RAG) system for Dubai real estate knowledge management. The system uses a functional programming approach with strict TypeScript typing.
+
+## Core Components
+
+### Vector Store
+- PostgreSQL with pgvector extension
+- Configuration in [packages/ai/src/knowledge/config.ts](mdc:packages/ai/src/knowledge/config.ts)
+- Two distinct indexes: general_knowledge and property_knowledge
+
+### Types and Interfaces
+- Core types defined in [packages/shared/types/rag.ts](mdc:packages/shared/types/rag.ts)
+- Strict readonly types for immutability
+- Separate interfaces for general and property knowledge
+
+### Knowledge Ingestion
+- Main script: [packages/ai/src/scripts/knowledge.ts](mdc:packages/ai/src/scripts/knowledge.ts)
+- Uses OpenAI's text-embedding-3-small model
+- Implements different chunking strategies per content type
+
+## Key Design Principles
+
+1. **Functional Programming**
+   - No classes, only pure functions
+   - Immutable data structures with readonly types
+   - Function composition over inheritance
+
+2. **Type Safety**
+   - Strict TypeScript configuration
+   - Comprehensive type definitions
+   - Runtime type validation
+
+3. **Error Handling**
+   - Early error detection
+   - Proper error messages
+   - Process termination on fatal errors

@@ -3,7 +3,7 @@ import { type AgentResponse, Message } from "../../shared/types";
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const MASTRA_API_URL = process.env.MASTRA_API_URL || "http://localhost:4111";
-const AGENT_ID = "telegramAssistant";
+const AGENT_ID = "realEstateAgent";
 
 if (!BOT_TOKEN) {
 	throw new Error("TELEGRAM_BOT_TOKEN is required");

@@ -1,0 +1,97 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Development Workflow
+
+This document outlines the development workflow and contribution guidelines for the RAG system.
+
+## Project Structure
+
+```
+packages/
+  ├── ai/
+  │   └── src/
+  │       ├── knowledge/
+  │       │   └── config.ts      # RAG configuration
+  │       └── scripts/
+  │           └── knowledge.ts   # Ingestion script
+  └── shared/
+      └── types/
+          └── rag.ts            # Shared types
+```
+
+## Development Setup
+
+1. **Environment Configuration**
+   ```bash
+   # Required in packages/ai/.env
+   POSTGRES_CONNECTION_STRING=
+   OPENAI_API_KEY=
+   ```
+
+2. **Dependencies**
+   - Use pnpm for package management
+   - Run `pnpm install` in root directory
+   - Ensure PostgreSQL with pgvector is running
+
+## Development Commands
+
+```bash
+# Knowledge Management
+pnpm run knowledge          # Run full knowledge pipeline
+pnpm run validate-knowledge # Validate knowledge files
+pnpm run ingest-knowledge   # Run ingestion only
+
+# Development
+pnpm run dev               # Start development server
+pnpm run build            # Build for production
+pnpm run typecheck        # Run type checks
+```
+
+## Contribution Guidelines
+
+1. **Code Style**
+   - Follow functional programming principles
+   - Use TypeScript strict mode
+   - Maintain immutability
+   - Keep functions pure and small
+
+2. **Type Safety**
+   - Define types in [packages/shared/types/rag.ts](mdc:packages/shared/types/rag.ts)
+   - Use readonly types for immutability
+   - Avoid type assertions
+   - Validate at runtime
+
+3. **Testing**
+   - Write unit tests for pure functions
+   - Add integration tests for workflows
+   - Test error handling
+   - Validate type safety
+
+4. **Documentation**
+   - Document all public functions
+   - Include example usage
+   - Explain complex algorithms
+   - Keep README files updated
+
+## Best Practices
+
+1. **Error Handling**
+   - Use early returns
+   - Provide clear error messages
+   - Handle edge cases
+   - Log appropriately
+
+2. **Performance**
+   - Optimize database queries
+   - Use appropriate chunk sizes
+   - Implement caching where needed
+   - Monitor resource usage
+
+3. **Maintenance**
+   - Keep dependencies updated
+   - Review and clean up logs
+   - Monitor system health
+   - Update documentation

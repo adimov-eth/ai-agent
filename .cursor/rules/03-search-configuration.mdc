@@ -1,0 +1,64 @@
+---
+description: RAG search configuration
+globs: 
+alwaysApply: false
+---
+# Search Configuration
+
+The RAG system implements a hybrid search approach combining semantic search, vector similarity, and metadata filtering.
+
+## Search Components
+
+### Vector Search
+- Uses pgvector for similarity search
+- 1536-dimensional embeddings (text-embedding-3-small)
+- Cosine similarity metric
+
+### Metadata Filtering
+```typescript
+interface MetadataFilter {
+  location?: string | string[];
+  priceRange?: {
+    min?: number;
+    max?: number;
+  };
+  type?: string[];
+  completion?: 'ready' | 'offplan';
+  bedrooms?: number[];
+}
+```
+
+### Hybrid Search Configuration
+Configuration defined in [packages/ai/src/knowledge/config.ts](mdc:packages/ai/src/knowledge/config.ts):
+
+```typescript
+const hybridSearchConfig = {
+  weights: {
+    semantic: 0.5,    // Semantic relevance
+    vector: 0.3,      // Vector similarity
+    metadata: 0.2     // Metadata match score
+  },
+  reranking: {
+    model: 'gpt-4o-mini',
+    topK: 5,
+    contextWindow: 3
+  }
+};
+```
+
+## Search Implementation Guidelines
+
+1. **Query Processing**
+   - Use semantic understanding for intent
+   - Extract metadata filters from query
+   - Apply appropriate weights based on query type
+
+2. **Result Ranking**
+   - Combine vector and metadata scores
+   - Apply reranking for final ordering
+   - Consider context window for relevance
+
+3. **Performance Optimization**
+   - Use metadata indexes where possible
+   - Apply filters before vector search
+   - Cache common queries

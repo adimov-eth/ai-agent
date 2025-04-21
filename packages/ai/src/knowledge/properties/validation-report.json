@@ -1,0 +1,23 @@
+{
+  "summary": {
+    "totalFiles": 1096,
+    "processedFiles": 1096,
+    "modifiedFiles": 56,
+    "errorCount": 0
+  },
+  "modifiedFields": {
+    "type": 55,
+    "location": 55,
+    "developer": 55,
+    "completion": 56,
+    "priceMin": 112,
+    "priceMax": 112,
+    "currency": 56,
+    "bedrooms": 56,
+    "amenities": 56,
+    "projectId": 57,
+    "id": 1,
+    "districtName": 1
+  },
+  "errors": []
+}

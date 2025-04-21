@@ -1,0 +1,81 @@
+---
+description: Rag observability
+globs: 
+alwaysApply: false
+---
+# Observability and Monitoring
+
+The RAG system implements comprehensive observability to track performance, costs, and quality metrics.
+
+## Metrics Configuration
+
+Configuration defined in [packages/ai/src/knowledge/config.ts](mdc:packages/ai/src/knowledge/config.ts):
+
+```typescript
+const ragObservability = {
+  metrics: {
+    chunkQuality: true,
+    retrievalLatency: true,
+    embeddingCosts: true
+  },
+  tracing: {
+    enabled: true,
+    samplingRate: 0.1
+  },
+  exporters: ['otlp']
+};
+```
+
+## Key Metrics
+
+### Performance Metrics
+- Query latency
+- Embedding generation time
+- Vector search speed
+- Reranking latency
+
+### Quality Metrics
+- Chunk quality scores
+- Retrieval precision
+- Reranking effectiveness
+- Metadata match accuracy
+
+### Cost Metrics
+- Embedding token usage
+- API calls per query
+- Storage utilization
+- Cache hit rates
+
+## Logging Guidelines
+
+1. **Error Logging**
+   - Log all errors with stack traces
+   - Include relevant context
+   - Use appropriate error levels
+
+2. **Performance Logging**
+   - Track timing for each operation
+   - Log resource usage
+   - Monitor rate limits
+
+3. **Quality Monitoring**
+   - Track chunk quality metrics
+   - Monitor search relevance
+   - Log user feedback
+
+## Monitoring Best Practices
+
+1. **Alert Configuration**
+   - Set up alerts for critical errors
+   - Monitor performance thresholds
+   - Track cost anomalies
+
+2. **Dashboard Setup**
+   - Real-time performance metrics
+   - Cost tracking
+   - Quality indicators
+
+3. **Maintenance**
+   - Regular log rotation
+   - Metric aggregation
+   - Alert tuning

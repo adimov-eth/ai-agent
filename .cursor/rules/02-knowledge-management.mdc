@@ -1,0 +1,69 @@
+---
+description: knowledge management
+globs: 
+alwaysApply: false
+---
+# Knowledge Management System
+
+The system manages two types of knowledge bases: general real estate knowledge and specific property listings.
+
+## Knowledge Types
+
+### General Knowledge
+- Area guides
+- Market updates
+- Investment guides
+- Stored in [packages/ai/knowledge/general/](mdc:packages/ai/knowledge/general)
+- Uses markdown chunking strategy (1024 tokens)
+
+### Property Knowledge
+- Individual property listings
+- Project details
+- Developer information
+- Stored in [packages/ai/knowledge/genie_properties/](mdc:packages/ai/knowledge/genie_properties)
+- Uses recursive chunking strategy (512 tokens)
+
+## Metadata Structure
+
+### General Knowledge Metadata
+```typescript
+interface GeneralKnowledgeMetadata {
+  type: 'area-guide' | 'market-update' | 'investment-guide';
+  location?: string;
+  category: string[];
+  summary?: string;
+  amenities?: string[];
+  priceRange?: PriceRange;
+}
+```
+
+### Property Metadata
+```typescript
+interface PropertyKnowledgeMetadata {
+  projectId: string;
+  type: 'apartment' | 'villa' | 'townhouse' | 'penthouse';
+  location: string;
+  priceRange: PriceRange;
+  bedrooms: number[];
+  completion: 'ready' | 'offplan';
+  developer: string;
+  amenities: string[];
+}
+```
+
+## File Requirements
+
+1. **Frontmatter**
+   - Required metadata fields must be present
+   - Types must match interface definitions
+   - Price ranges must be valid numbers
+
+2. **Content Structure**
+   - Must be valid markdown
+   - Should use proper heading hierarchy
+   - Should include relevant details in structured format
+
+3. **File Organization**
+   - General knowledge in appropriate categories
+   - Property listings organized by project/location
+   - Consistent file naming convention
