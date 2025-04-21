@@ -24,9 +24,12 @@ const memory = new Memory({
 			messageRange: 2, // Include 1 message before/after match
 		},
 		workingMemory: {
-			enabled: true, // Store persistent facts about the user
+			enabled: true,
 			template: workingMemoryTemplate,
-			use: "tool-call",
+			use: "tool-call", // Use tool calls for working memory updates
+		},
+		threads: {
+			generateTitle: true, // Auto-generate thread titles from first message
 		},
 	},
 });

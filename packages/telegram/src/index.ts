@@ -11,7 +11,11 @@ if (!BOT_TOKEN) {
 
 const bot = new Bot(BOT_TOKEN);
 
-async function callAgent(message: string): Promise<AgentResponse | null> {
+async function callAgent(
+	message: string,
+	userId: string,
+	chatId: string,
+): Promise<AgentResponse | null> {
 	try {
 		const response = await fetch(
 			`${MASTRA_API_URL}/api/agents/${AGENT_ID}/generate`,
@@ -20,6 +24,8 @@ async function callAgent(message: string): Promise<AgentResponse | null> {
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
 					messages: [{ role: "user", content: message }],
+					resourceId: `telegram-user-${userId}`, // Unique user identifier
+					threadId: `telegram-chat-${chatId}`, // Unique chat/thread identifier
 				}),
 			},
 		);
@@ -35,7 +41,15 @@ async function callAgent(message: string): Promise<AgentResponse | null> {
 bot.on("message:text", async (ctx) => {
 	await ctx.replyWithChatAction("typing");
 
-	const response = await callAgent(ctx.message.text);
+	const userId = ctx.from?.id.toString();
+	const chatId = ctx.chat.id.toString();
+
+	if (!userId) {
+		await ctx.reply("Sorry, I couldn't identify you. Please try again.");
+		return;
+	}
+
+	const response = await callAgent(ctx.message.text, userId, chatId);
 
 	if (response?.text) {
 		await ctx.reply(response.text);
@@ -44,9 +58,27 @@ bot.on("message:text", async (ctx) => {
 	}
 });
 
-bot.command("start", (ctx) =>
-	ctx.reply("Hello! I'm your AI assistant. How can I help?"),
-);
+bot.command("start", async (ctx) => {
+	const userId = ctx.from?.id.toString();
+	const chatId = ctx.chat.id.toString();
+
+	if (!userId) {
+		await ctx.reply("Sorry, I couldn't identify you. Please try again.");
+		return;
+	}
+
+	const response = await callAgent(
+		"Hi! I'm starting a new conversation.",
+		userId,
+		chatId,
+	);
+
+	if (response?.text) {
+		await ctx.reply(response.text);
+	} else {
+		await ctx.reply("Hello! I'm your AI assistant. How can I help?");
+	}
+});
 
 bot.catch((err) => {
 	console.error("Bot error:", err);
