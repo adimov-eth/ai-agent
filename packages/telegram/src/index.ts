@@ -30,7 +30,10 @@ async function callAgent(
 			},
 		);
 
-		if (!response.ok) return null;
+		if (!response.ok) {
+			console.log("Agent API error: ", response);
+			return null;
+		}
 		return response.json();
 	} catch (error) {
 		console.error("Agent API error:", error);
