@@ -55,7 +55,7 @@ bot.on("message:text", async (ctx) => {
 	if (response?.text) {
 		await ctx.reply(response.text);
 	} else {
-		console.log("No response from agent");
+		console.log("No response from agent: ", response);
 		await ctx.reply("Sorry, I'm having trouble processing your request.");
 	}
 });
