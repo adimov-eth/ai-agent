@@ -45,6 +45,7 @@ bot.on("message:text", async (ctx) => {
 	const chatId = ctx.chat.id.toString();
 
 	if (!userId) {
+		console.log("No user ID found");
 		await ctx.reply("Sorry, I couldn't identify you. Please try again.");
 		return;
 	}
@@ -54,6 +55,7 @@ bot.on("message:text", async (ctx) => {
 	if (response?.text) {
 		await ctx.reply(response.text);
 	} else {
+		console.log("No response from agent");
 		await ctx.reply("Sorry, I'm having trouble processing your request.");
 	}
 });
@@ -63,6 +65,7 @@ bot.command("start", async (ctx) => {
 	const chatId = ctx.chat.id.toString();
 
 	if (!userId) {
+		console.log("No user ID found");
 		await ctx.reply("Sorry, I couldn't identify you. Please try again.");
 		return;
 	}
@@ -77,6 +80,7 @@ bot.command("start", async (ctx) => {
 		await ctx.reply(response.text);
 	} else {
 		await ctx.reply("Hello! I'm your AI assistant. How can I help?");
+		console.log("No response from agent");
 	}
 });
 
