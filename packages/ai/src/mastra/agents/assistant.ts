@@ -18,11 +18,11 @@ const memory = new Memory({
 		connectionString: process.env.POSTGRES_CONNECTION_STRING || "",
 	}),
 	options: {
-		lastMessages: 30,
-		semanticRecall: {
-			topK: 3, // Retrieve top 3 similar past messages
-			messageRange: 2, // Include 1 message before/after match
-		},
+		lastMessages: 20,
+		// semanticRecall: {
+		// 	topK: 3, // Retrieve top 3 similar past messages
+		// 	messageRange: 2, // Include 1 message before/after match
+		// },
 		workingMemory: {
 			enabled: true,
 			template: workingMemoryTemplate,
