@@ -81,7 +81,8 @@ const sendTelegramMessage = async (message: string) => {
 		chat_id: telegramChatId,
 		text: telegramMessage,
 	};
-	await axios.post(telegramUrl, payload); // Send the message to the specified chat
+	await axios.post(telegramUrl, payload);
+	return "Message sent successfully";
 };
 
 const notifyManagerTool = createTool({
