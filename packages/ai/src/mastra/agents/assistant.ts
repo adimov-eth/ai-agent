@@ -72,7 +72,7 @@ const knowledgeBaseSearchTool = createKnowledgeSearchTool(
 // );
 
 const sendTelegramMessage = async (message: string) => {
-	const telegramChatId = "5479478"; // Replace with the actual chat ID
+	const telegramChatId = "208409637"; // Replace with the actual chat ID
 	const telegramMessage = `${message}`;
 
 	const telegramUrl =
