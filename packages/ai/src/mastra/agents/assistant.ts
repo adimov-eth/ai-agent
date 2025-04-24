@@ -93,6 +93,7 @@ const notifyManagerTool = createTool({
 	}),
 	execute: async ({ context: { message } }) => {
 		await sendTelegramMessage(message);
+		return "Message sent successfully to manager";
 	},
 });
 
